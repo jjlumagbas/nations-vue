@@ -12,11 +12,8 @@
         </span>
       </button>
       <input type="range" id="year" step="any" 
-        :min="yearRange.min" 
-        :max="yearRange.max" 
-         @click="stop"
-         :value="inputYear"
-         @input="updateYear($event.target.value)">
+        :min="yearRange.min" :max="yearRange.max" 
+        @click="stop" :value="value" @input="updateYear($event.target.value)"/>
     </form>
   </section>
 </template>
