@@ -1,6 +1,5 @@
 <template>
   <section>
-    <output>{{ year }}</output>
     <form>
       <button class="button is-medium" type="button" @click="togglePlay" v-if="isPlaying">
         <span class="icon is-medium">
@@ -12,7 +11,12 @@
           <i class="fas fa-play" ></i>
         </span>
       </button>
-      <input type="range" id="year" v-model="inputYear" :min="yearRange.min" :max="yearRange.max" step="any" @click="stop">
+      <input type="range" id="year" step="any" 
+        :min="yearRange.min" 
+        :max="yearRange.max" 
+         @click="stop"
+         :value="inputYear"
+         @input="updateYear($event.target.value)">
     </form>
   </section>
 </template>
@@ -25,7 +29,7 @@ export default {
 
   data() {
     return {
-      inputYear: 1800,
+      inputYear: this.value,
       yearRange: {
         min: 1800,
         max: 2010
@@ -34,10 +38,11 @@ export default {
     };
   },
 
+  props: {
+    value: Number
+  },
+
   computed: {
-    year: function() {
-      return Math.floor(this.inputYear);
-    },
     isPlaying: function() {
       return this.timer == null ? false : true;
     }
@@ -45,15 +50,20 @@ export default {
 
 
   methods: {
+    updateYear: function(y) {
+      this.inputYear = Math.floor(y);
+      this.$emit('input', this.inputYear);
+    },
+
     reset: function() {
-      if (this.year === this.yearRange.max) {
-        this.inputYear = this.yearRange.min;
+      if (this.inputYear === this.yearRange.max) {
+        this.updateYear(this.yearRange.min);
       }
     },
 
     tick: function() {
       if (this.inputYear < this.yearRange.max) {
-        this.inputYear++;
+        this.updateYear(this.inputYear + 1);
       } else {
         this.stop();
       }

@@ -1,6 +1,7 @@
 <template>
   <section>
-    <YearScrubber/>
+    <p>{{ year }}</p>
+    <YearScrubber v-model="year"/>
   </section>
 </template>
 
