@@ -1,21 +1,19 @@
 <template>
-  <section>
-    <form>
-      <button class="button is-medium" type="button" @click="togglePlay" v-if="isPlaying">
-        <span class="icon is-medium">
-          <i class="fas fa-pause" ></i>
-        </span>
-      </button>
-      <button class="button is-medium" type="button" @click="togglePlay" v-else>
-        <span class="icon is-medium">
-          <i class="fas fa-play" ></i>
-        </span>
-      </button>
-      <input type="range" id="year" step="any" 
-        :min="yearRange.min" :max="yearRange.max" 
-        @click="stop" :value="value" @input="updateYear($event.target.value)"/>
-    </form>
-  </section>
+  <form>
+    <button class="button is-medium" type="button" @click="togglePlay" v-if="isPlaying">
+      <span class="icon is-medium">
+        <i class="fas fa-pause" ></i>
+      </span>
+    </button>
+    <button class="button is-medium" type="button" @click="togglePlay" v-else>
+      <span class="icon is-medium">
+        <i class="fas fa-play" ></i>
+      </span>
+    </button>
+    <input type="range" id="year" step="any" 
+      :min="yearRange.min" :max="yearRange.max" 
+      @click="stop" :value="value" @input="updateYear($event.target.value)"/>
+  </form>
 </template>
 
 <script>
@@ -94,11 +92,7 @@ export default {
 </script>
 
 <style scoped>
-section {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
+
 
 form {
   display: flex;
