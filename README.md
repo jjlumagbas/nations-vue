@@ -1,5 +1,7 @@
 # nations-vue
 
+[View the demo](https://upbeat-lumiere-3c2320.netlify.com/)
+
 Hans Rosling's Gapminder chart with D3 and Vue
 
 Stole most of the code from [Mike Bostock's Observable notebook](https://observablehq.com/@mbostock/the-wealth-health-of-nations). Thanks Mike!
